@@ -24,7 +24,7 @@ class LoginPage {
     await this.page.click('#loginPanel > form > div:nth-child(5) > input');
   }
 
-  // You can add more methods for additional actions on the login page
+ 
 }
 
 export default LoginPage;

@@ -12,12 +12,11 @@ class RequestLoanPage {
         await this.page.waitForSelector('#rightPanel > div > div > h1');
     }
 
-    // Function to input loan amount
     async loanAmountTextField(amount: string) {
         await this.page.fill('#amount', amount);
     }
 
-    // Function to input down payment amount
+   
     async downPaymentTextField(amount: string) {
         await this.page.fill('#downPayment', amount);
     }

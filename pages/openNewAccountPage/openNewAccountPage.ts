@@ -16,7 +16,7 @@ class OpenNewAccountPage {
     async submitAccountForm() {
         await this.page.click('#submit-account-button');
     }
-    // newAccountPage.ts
+   
     async openAccountTypeDropdown() {
         await this.page.click('#type');
     }
@@ -27,7 +27,7 @@ class OpenNewAccountPage {
 
     // newAccountPage.ts
     async isOpenAccountTypeDropdownVisible() {
-        // Adjust the selector based on your actual HTML structure representing the open dropdown
+
         return await this.page.isVisible('#type');
     }
 
@@ -48,10 +48,10 @@ class OpenNewAccountPage {
 
     // newAccountPage.ts
     async selectFirstOptionInAccountTypeDropdown() {
-        // Open the account type dropdown
+    
         await this.openAccountTypeDropdown();
 
-        // Select the first option in the dropdown
+       
         await this.page.selectOption('#type', { index: 0 }); // Assuming the first option is at index 1
     }
 
@@ -64,10 +64,10 @@ class OpenNewAccountPage {
 
     // newAccountPage.ts
     async selectFirstOptionExistingAccountDropDown() {
-        // Open the account type dropdown
+
         await this.openExistingAccountDropDown();
 
-        // Select the first option in the dropdown
+        
         await this.page.selectOption('#fromAccountId', { index: 0 }); // Assuming the first option is at index 1
     }
 
@@ -77,7 +77,7 @@ class OpenNewAccountPage {
 
     
 
-    // Add more methods for interacting with elements on the "Open New Account" page
+   
 }
 
 export default OpenNewAccountPage;

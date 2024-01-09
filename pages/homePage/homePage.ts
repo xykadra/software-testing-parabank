@@ -9,7 +9,7 @@ class HomePage {
   }
 
   async isHomePageLoaded() {
-    // Add checks for elements that indicate the home page is loaded
+
     await this.page.waitForSelector('#rightPanel > div > div > h1');
   }
 
@@ -18,7 +18,7 @@ class HomePage {
   }
 
   async getWelcomeMessage() {
-    // Return the text content of a welcome message element
+
     return this.page.textContent('#rightPanel > div > div > h1');
   }
 
@@ -47,7 +47,7 @@ class HomePage {
   async navigateToUpdateAccountInfo(){
     await this.page.click('#leftPanel > ul > li:nth-child(6) > a');
   }
-  // Add more methods for interacting with elements on the home page
+
 }
 
 export default HomePage;

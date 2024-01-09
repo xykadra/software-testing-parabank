@@ -27,7 +27,7 @@ class BillPayPage {
         await this.page.fill('#rightPanel > div > div:nth-child(1) > form > table > tbody > tr:nth-child(3) > td:nth-child(2) > input', city);
     }
 
-   
+
     async inputState(state: string) {
         await this.page.fill('#rightPanel > div > div:nth-child(1) > form > table > tbody > tr:nth-child(4) > td:nth-child(2) > input', state);
     }
@@ -37,10 +37,15 @@ class BillPayPage {
         await this.page.fill('#rightPanel > div > div:nth-child(1) > form > table > tbody > tr:nth-child(5) > td:nth-child(2) > input', zipCode);
     }
 
-
+    //phone number id is dynamic 
     async inputPhone(phone: string) {
 
-        await this.page.fill('', phone);
+        const phoneInput = await this.page.$('[ng-model="payee.phoneNumber"]');
+        if (phoneInput) {
+            await phoneInput.fill(phone);
+        } else {
+            console.error('Phone input element not found.');
+        }
     }
 
 
@@ -49,12 +54,9 @@ class BillPayPage {
     }
 
 
-    async verifyAccount() {
-        
-        const accountValue = await this.page.$eval('#rightPanel > div > div:nth-child(1) > form > table > tbody > tr:nth-child(8) > td:nth-child(2) > input', (input) => (input as HTMLInputElement).value);
+    async verifyAccount(account: string) {
 
-        
-        await this.page.fill('#rightPanel > div > div:nth-child(1) > form > table > tbody > tr:nth-child(9) > td:nth-child(2) > input', accountValue);
+        await this.page.fill('#rightPanel > div > div:nth-child(1) > form > table > tbody > tr:nth-child(9) > td:nth-child(2) > input', account);
     }
 
     async inputAmount(amount: string) {
@@ -63,15 +65,15 @@ class BillPayPage {
 
 
     async selectAccount() {
-        await this.page.selectOption('#rightPanel > div > div:nth-child(1) > form > table > tbody > tr:nth-child(13) > td:nth-child(2) > select', { index: 1 });
+        await this.page.selectOption('#rightPanel > div > div:nth-child(1) > form > table > tbody > tr:nth-child(13) > td:nth-child(2) > select', { index: 0 });
     }
 
-   
+
     async clickSendPayment() {
         await this.page.click('#rightPanel > div > div:nth-child(1) > form > table > tbody > tr:nth-child(14) > td:nth-child(2) > input');
     }
 
-  
+
 }
 
 export default BillPayPage;
